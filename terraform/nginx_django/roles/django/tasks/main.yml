@@ -1,0 +1,20 @@
+---
+- name: Install Python 3 and pip
+  apt:
+    name:
+      - python3
+      - python3-pip
+    state: present
+    update_cache: yes
+- name: Install Django
+  pip:
+    name:
+      - django
+
+- name: Creating myapp Django project
+  command: django-admin startproject myapp
+
+- name: Start Django server
+  command: python3 /home/ubuntu/myapp/manage.py runserver 0.0.0.0:8000
+  async: 45 # To keep it running in the background while playbook moves to next task
+  poll: 0 
