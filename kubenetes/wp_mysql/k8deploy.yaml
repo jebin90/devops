@@ -86,7 +86,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-pass
-              key: password
+              key: pass
         ports:
         - containerPort: 80
           name: wordpress
@@ -100,7 +100,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-pass
-              key: password
+              key: pass
         ports:
         - containerPort: 3306
           name: mysql
