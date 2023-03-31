@@ -7,6 +7,7 @@ It starts with securing the layers themselves (OS, libraries, packages, etc.). U
 Eliminate dependencies that are unnecessary to reduce attack surface. Use multi-stage builds to reduce size. Use tools like Snyk, Sysdig, etc. for image scanning (vulnerabilities, misconfiguration).
 It is recommended to be run regularly before being pushed to the registry.
 This can be implemented during build process in the CI/CD pipeline.
+Dynamic scan on running containers are also recommended. Use Snyk, TwistLock, AquaSec, etc.
 
 ### 2. Avoid running containers as root user
 Create and switch to non-root user before running. USER directive can be used, but can be overrridden by securityContext in spec. Hence, avoid running privileged containers.
@@ -39,8 +40,8 @@ Automating backup and restore is recommended. Built-in tools like etcdctl can be
 3rd party tools like Velero can also be used to backup and restore.
 
 ### 9. Configure Security Policies
-Make sure all users avoid misconfigurations by using Security Policies (eg., disallow container run as root, enforce network policy definition for each pod, etc.).
-This can be implemented using 3rd party policy engines like Open Policy Agent, Kyverno, etc, which can also be automated.
+Make sure all users avoid misconfigurations by using Security Policies (eg., disallow container run as root, enforce network policy definition for each pod, allow images only from approved repo, etc.).
+This can be implemented using 3rd party policy engines like Open Policy Agent, Gatekeeper, Kyverno, etc, which can also be automated.
 
 ### 10. Disaster Recovery
 Have proper strategy and mechanism for disaster recovery (back to the same state). TrilioVault, Portworx, etc are some examples.
@@ -49,5 +50,7 @@ Have proper strategy and mechanism for disaster recovery (back to the same state
 Using hardened AMI reduces attack surface on worker nodes. This can be custom made or purchased from Marketplace.
 
 ### 12. Version Updation and Benchmarking
-Make sure all component versions are updated regularly since they always keep getting security patches. Run kube-bench for CIS benchmark periodically (CIS contains list of vulnerabilities for particular list of AMIs based on OS)
+Make sure all component versions are updated regularly since they always keep getting security patches. Run kube-bench for CIS benchmark periodically (CIS contains list of vulnerabilities for particular list of AMIs based on OS). In case of images, it is best to mention tag instead of using latest.
 
+### 13. Enable audit logs
+Store logs from continuous monitoring as well as create alarms when suspicious activity is detected. This can be implemented in cloud console.
