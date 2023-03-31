@@ -4,7 +4,7 @@
 
 ### 1. Image scanning for vulnerabilities.
 It starts with securing the layers themselves (OS, libraries, packages, etc.). Use leaner base images as much as possible (eg. alpine).
-Eliminate dependencies that are unnecessary. Use tools like Snyk, Sysdig, etc. for image scanning (vulnerabilities, misconfiguration).
+Eliminate dependencies that are unnecessary to reduce attack surface. Use multi-stage builds to reduce size. Use tools like Snyk, Sysdig, etc. for image scanning (vulnerabilities, misconfiguration).
 It is recommended to be run regularly before being pushed to the registry.
 This can be implemented during build process in the CI/CD pipeline.
 
@@ -44,4 +44,10 @@ This can be implemented using 3rd party policy engines like Open Policy Agent, K
 
 ### 10. Disaster Recovery
 Have proper strategy and mechanism for disaster recovery (back to the same state). TrilioVault, Portworx, etc are some examples.
+
+### 11. Hardened AMIs in cloud
+Using hardened AMI reduces attack surface on worker nodes. This can be custom made or purchased from Marketplace.
+
+### 12. Version Updation and Benchmarking
+Make sure all component versions are updated regularly since they always keep getting security patches. Run kube-bench for CIS benchmark periodically (CIS contains list of vulnerabilities for particular list of AMIs based on OS)
 
