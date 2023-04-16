@@ -10,3 +10,6 @@ Network policies in Kubernetes are implemented using the Kubernetes Network Poli
 
 Ingress rules define the traffic that is allowed to flow into a pod, while egress rules define the traffic that is allowed to flow out of a pod. In addition to specifying the source and destination pods, network policies can also specify other properties such as the protocol (TCP, UDP, etc.), the port number, and the traffic direction (ingress or egress).
 
+By using network policies, we can implement a wide range of security and compliance policies to protect the cluster from malicious attacks and unauthorized access. For eg., isolating sensitive workloads, restricting access to specific ports, or blocking traffic from specific IP addresses.
+
+To actually enforce the network policy, make sure a 3rd party CNI is installed alongside like Calico, Weave, Flannel, etc.
