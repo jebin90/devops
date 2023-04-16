@@ -8,3 +8,5 @@ They are typically used in multi-tenant Kubernetes clusters where multiple teams
 
 Network policies in Kubernetes are implemented using the Kubernetes Network Policy API, which allows you to create and manage network policies using YAML files. A network policy typically consists of a set of ingress and egress rules that define how traffic is allowed to flow to and from a pod.
 
+Ingress rules define the traffic that is allowed to flow into a pod, while egress rules define the traffic that is allowed to flow out of a pod. In addition to specifying the source and destination pods, network policies can also specify other properties such as the protocol (TCP, UDP, etc.), the port number, and the traffic direction (ingress or egress).
+
