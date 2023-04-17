@@ -13,3 +13,5 @@ Ingress rules define the traffic that is allowed to flow into a pod, while egres
 By using network policies, we can implement a wide range of security and compliance policies to protect the cluster from malicious attacks and unauthorized access. For eg., isolating sensitive workloads, restricting access to specific ports, or blocking traffic from specific IP addresses.
 
 To actually enforce the network policy, make sure a 3rd party CNI is installed alongside like Calico, Weave, Flannel, etc.
+
+As an example in the yaml file, using {} for podSelector selects all pods. Leaving empty content under Ingress/Egress means no traffic is allowed, but using {} under ingress would mean all incoming traffic is allowed.
